@@ -1,0 +1,2 @@
+main:fonts\moon\moon.ttf
+name:MS Gothic
