@@ -58,10 +58,14 @@ void setup()
 
   // フォントのロードと設定
   String[] fontList = loadStrings("fonts\\font_datas.txt");
+  if (debugMode)
+  {
+    println("in  >> fonts\\font_datas.txt");
+  }
   for (String a : fontList)
   {
     String[] sp = a.split(":");
-    ctrl.fonts.put(sp[0],createFont(sp[1], 128, true));
+    ctrl.fonts.put(sp[0], createFont(sp[1], 128, true));
     stageTitles[parseInt(sp[0])] = sp[1];
   }
 
@@ -73,10 +77,13 @@ void setup()
   files = listFiles(path + "\\data\\musics");
   for (File a : files)
   {
-    println("in  >> musics\\" + a.getName());
     BGMs.put(a.getName().substring(0, a.getName().lastIndexOf('.')), 
       minim.loadFile(a.getPath()));
-    println(a.getPath());
+    if (debugMode)
+    {
+      println("in  >> musics\\" + a.getName());
+      println(a.getPath());
+    }
   }
 
   // 画像のロード
@@ -87,9 +94,12 @@ void setup()
     if (a.getName().equals("no use"))
       continue;
 
-    println("in  >> images\\" + a.getName());
     Images.put(a.getName().substring(0, a.getName().lastIndexOf('.')), 
       loadImage(a.getPath()));
+    if (debugMode)
+    {
+      println("in  >> images\\" + a.getName());
+    }
   }
 
   // 音量設定
@@ -103,13 +113,17 @@ void setup()
 
   // タイトルのロード
   String[] titles = loadStrings("stage_titles.txt");
+  if (debugMode)
+  {
+    println("in  >> stage_titles.txt");
+  }
   for (String a : titles)
   {
     String[] sp = a.split(":");
     stageTitles[parseInt(sp[0])] = sp[1];
   }
 
-  eventPut(0);
+  eventPut(stage);
 }
 
 void draw()
@@ -139,8 +153,11 @@ void keyPressed()
   case 'S':
     String name = "" + year() + "" + month() + "" + day() + "" +
       hour() + "" + minute() + ""+second();
-    println("out << saveFrames\\_" + name + ".png");
     save("saveFrames\\" + name + ".png");
+    if (debugMode)
+    {
+      println("out << saveFrames\\_" + name + ".png");
+    }
     break;
 
   case 'd':

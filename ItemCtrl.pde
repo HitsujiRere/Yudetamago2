@@ -18,7 +18,7 @@ class ItemCtrl
 
   // フラグの管理所
   HashMap<String, Flag> flags = new HashMap();
-  
+
   // Textboxのフォント
   //  指定がない場はmainを使用する
   HashMap<String, PFont> fonts = new HashMap();
@@ -39,7 +39,8 @@ class ItemCtrl
     if (mousePressed && !pmousePressed)
     {
       mouseClicked = true;
-      println(""+frameCount+":mouseClicked");
+      if (debugMode)
+        println(""+frameCount+":mouseClicked");
     } else
     {
       mouseClicked = false;
@@ -48,6 +49,8 @@ class ItemCtrl
     if (!mousePressed && pmousePressed)
     {
       mouseReleased = true;
+      if (debugMode)
+        println(""+frameCount+":mouseReleased");
     } else
     {  
       mouseReleased = false;

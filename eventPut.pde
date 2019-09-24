@@ -348,8 +348,11 @@ int eventPut(int num)
         t1 = new Textbox("expText_"+i, ctrl, 2);
         t1.pos = new PVector(64, 32+64+32 + (32+10)*i);
         t1.scl = new PVector(0, 32);
-        
-        println(texts[i]);
+
+        if (debugMode)
+        {
+          println(texts[i]);
+        }
 
         if (texts[i].length() >= 2 && texts[i].substring(0, 1).equals("\\"))
         {
