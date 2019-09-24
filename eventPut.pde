@@ -267,6 +267,13 @@ int eventPut(int num)
       i1.pos = new PVector(random(0, width), random(-width, 0));
     }
 
+    t1 = new Textbox("version", ctrl, 1);
+    t1.text = loadStrings("version.txt")[0];
+    t1.pos = new PVector(width-8, height-8);
+    t1.alignX = RIGHT;
+    t1.alignY = DOWN;
+    t1.scl = new PVector(0, 32);
+
     break;
 
     // メニュー
@@ -410,6 +417,7 @@ int eventPut(int num)
         t1 = new Textbox("expText_"+i, ctrl, 2);
         t1.pos = new PVector(64, 32+64+w + (w+10)*i);
         t1.scl = new PVector(0, w);
+        t1.font = "name";
 
         if (debugMode)
         {

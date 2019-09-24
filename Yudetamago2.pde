@@ -1,4 +1,4 @@
-// ゆでたまご　２
+// ゆでたまご２  ver.0.0.1
 // Yudetamago2 
 //  maked by 陽辻怜玲@HitsujiRere
 
