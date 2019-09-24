@@ -16,7 +16,7 @@ boolean isPlayBGM = false;
 HashMap<String, PImage> Images = new HashMap();
 
 // デバッグモード
-boolean debugMode = false;
+boolean debugMode = true;
 
 // ステージ番号
 //    -1:初期化
@@ -26,6 +26,7 @@ boolean debugMode = false;
 //     0:タイトル
 //     1:メニュー
 //     2:How to Play
+//     3:ライセンス
 // 100+n:nステージ
 int stage = 0;
 // ステージ数
@@ -82,7 +83,7 @@ void setup()
     if (debugMode)
     {
       println("in  >> musics\\" + a.getName());
-      println(a.getPath());
+      //println("        " + a.getName().substring(0, a.getName().lastIndexOf('.')));
     }
   }
 

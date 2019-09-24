@@ -342,12 +342,13 @@ int eventPut(int num)
     //i1.img.resize(32*3*3, 32*2*3);
 
     {
+      int w = 32;
       String[] texts = loadStrings("howtoplay_exp.txt");
       for (int i = 0; i < texts.length; i++)
       {
         t1 = new Textbox("expText_"+i, ctrl, 2);
-        t1.pos = new PVector(64, 32+64+32 + (32+10)*i);
-        t1.scl = new PVector(0, 32);
+        t1.pos = new PVector(64, w+64+w + (w+10)*i);
+        t1.scl = new PVector(0, w);
 
         if (debugMode)
         {
@@ -364,6 +365,19 @@ int eventPut(int num)
         }
       }
     }
+    
+    b1 = new Button("openButton", ctrl, 1);
+    b1.pos = new PVector(width-32-64*3, height-32^64);
+    b1.scl = new PVector(64*3, 64);
+
+    t1 = new Textbox("openText", ctrl, 2);
+    t1.parent = b1;
+    t1.text = "ライセンス";
+    t1.alignX = CENTER;
+    t1.alignY = CENTER;
+    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
+    t1.isIncParentGetScl = false;
+    t1.scl = new PVector(0, 32);
 
     break;
 
