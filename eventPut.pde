@@ -365,19 +365,67 @@ int eventPut(int num)
         }
       }
     }
-    
+
     b1 = new Button("openButton", ctrl, 1);
-    b1.pos = new PVector(width-32-64*3, height-32^64);
+    b1.pos = new PVector(32+64*3+64, 32);
     b1.scl = new PVector(64*3, 64);
 
     t1 = new Textbox("openText", ctrl, 2);
     t1.parent = b1;
-    t1.text = "ライセンス";
+    t1.text = "使用素材";
     t1.alignX = CENTER;
     t1.alignY = CENTER;
     t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
     t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 32);
+
+    break;
+
+    // 使用素材
+  case 3:
+
+    playBGM("op");
+    eventPut(-1);
+
+    backcolor = #98BBDB;
+
+    b1 = new Button("closeButton", ctrl, 1);
+    b1.pos = new PVector(32, 32);
+    b1.scl = new PVector(64*3, 64);
+
+    t1 = new Textbox("closeText", ctrl, 2);
+    t1.parent = b1;
+    t1.text = "Close";
+    t1.alignX = CENTER;
+    t1.alignY = CENTER;
+    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
+    t1.isIncParentGetScl = false;
+    t1.scl = new PVector(0, 32);
+
+    {
+      int w = 24;
+      String[] texts = loadStrings("material_used.txt");
+      for (int i = 0; i < texts.length; i++)
+      {
+        t1 = new Textbox("expText_"+i, ctrl, 2);
+        t1.pos = new PVector(64, 32+64+w + (w+10)*i);
+        t1.scl = new PVector(0, w);
+
+        if (debugMode)
+        {
+          println(texts[i]);
+        }
+
+        if (texts[i].length() >= 2 && texts[i].substring(0, 1).equals("\\"))
+        {
+          t1.text = texts[i].substring(1);
+          t1.font = "name";
+        } else
+        {
+          t1.text = texts[i];
+        }
+      }
+    }
 
     break;
 

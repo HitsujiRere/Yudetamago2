@@ -137,6 +137,25 @@ int eventRun(int num)
       return 1;
     }
 
+    if (ctrl.getButton("openButton").isValueChanged)
+    {
+      stage = 3;
+      eventPut(stage);
+      return 1;
+    }
+
+    break;
+
+    // 使用素材
+  case 3:
+
+    if (ctrl.getButton("closeButton").isValueChanged)
+    {
+      stage = 2;
+      eventPut(stage);
+      return 1;
+    }
+
     break;
 
     // stage 0

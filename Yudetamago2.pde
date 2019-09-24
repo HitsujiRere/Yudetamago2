@@ -26,7 +26,7 @@ boolean debugMode = true;
 //     0:タイトル
 //     1:メニュー
 //     2:How to Play
-//     3:ライセンス
+//     3:使用素材
 // 100+n:nステージ
 int stage = 0;
 // ステージ数
