@@ -1,5 +1,5 @@
 // よく使うもののショートカット
-Textbox message;
+Text message;
 Flag time, timeMax;
 Flag get_nabe, get_water, get_konro;
 int endMessageNum = 0;
@@ -21,7 +21,7 @@ void playBGM(String name)
 
 int eventPut(int num)
 {
-  Textbox t1;
+  Text t1;
   Button b1, b2;
   Image i1;
   Rect r1;
@@ -96,7 +96,7 @@ int eventPut(int num)
     r1.clr_fill = #EFEFEF;
     r1.weight_stroke = 4;
 
-    message = new Textbox("message", ctrl, 1);
+    message = new Text("message", ctrl, 1);
     message.parent = r1;
     //t1.text = "This is message box.\nHello World!";
     if (stage >= 100)
@@ -135,13 +135,12 @@ int eventPut(int num)
     b1.images[0].resize();
     b1.copyImage(0);
 
-    t1 = new Textbox("menuTxt", ctrl, 1);
-    t1.parent = b1;
-    t1.pos = new PVector(96/2, 96-16);
-    t1.isIncParentGetScl = false;
+    t1 = new Text("menuTxt", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.scl.y = 32;
     t1.text = "Menu";
-    t1.alignX = CENTER;
+    t1.pos.y = 96-16; 
+    t1.alignY = TOP;
 
     break;
 
@@ -201,7 +200,7 @@ int eventPut(int num)
     b1.images[0].resize();
     b1.copyImage(0);
 
-    t1 = new Textbox("menuTxt", ctrl, 1);
+    t1 = new Text("menuTxt", ctrl, 1);
     t1.parent = b1;
     t1.pos = new PVector(50, 100);
     t1.isIncParentGetScl = false;
@@ -219,12 +218,12 @@ int eventPut(int num)
 
     backcolor = #98BBDB;
 
-    t1 = new Textbox("title1", ctrl, 1);
+    t1 = new Text("title1", ctrl, 1);
     t1.text = "親方ぁ！空から";
     t1.pos = new PVector(16, 16);
     t1.scl = new PVector(0, 128);
 
-    t1 = new Textbox("title2", ctrl, 1);
+    t1 = new Text("title2", ctrl, 1);
     t1.text = "生卵が！！ ②";
     t1.alignX = RIGHT;
     t1.pos = new PVector(width-16, 16+128+16);
@@ -234,26 +233,18 @@ int eventPut(int num)
     b1.pos = new PVector(64, 16+128+16+64+128);
     b1.scl = new PVector(width/2 - 64 - 32, height-16-128-16-64-128-64);
 
-    t1 = new Textbox("startText", ctrl, 2);
-    t1.parent = b1;
+    t1 = new Text("startText", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.text = "Play Start!";
-    t1.alignX = CENTER;
-    t1.alignY = CENTER;
-    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-    t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 64);
 
     b1 = new Button("howButton", ctrl, 1);
     b1.pos = new PVector(width/2 + 32, 16+128+16+64+128);
     b1.scl = new PVector(width/2 - 64 - 32, height-16-128-16-64-128-64);
 
-    t1 = new Textbox("howText", ctrl, 2);
-    t1.parent = b1;
+    t1 = new Text("howText", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.text = "How to Play";
-    t1.alignX = CENTER;
-    t1.alignY = CENTER;
-    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-    t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 64);
 
     f1 = new Flag("eggNum", ctrl);
@@ -267,7 +258,7 @@ int eventPut(int num)
       i1.pos = new PVector(random(0, width), random(-width, 0));
     }
 
-    t1 = new Textbox("version", ctrl, 1);
+    t1 = new Text("version", ctrl, 1);
     t1.text = loadStrings("version.txt")[0];
     t1.pos = new PVector(width-8, height-8);
     t1.alignX = RIGHT;
@@ -284,7 +275,7 @@ int eventPut(int num)
 
     backcolor = #98BBDB;
 
-    t1 = new Textbox("menu", ctrl, 1);
+    t1 = new Text("menu", ctrl, 1);
     t1.text = "Menu";
     t1.pos = new PVector(32, 32);
     t1.scl = new PVector(0, 64);
@@ -293,13 +284,9 @@ int eventPut(int num)
     b1.pos = new PVector(256, 32);
     b1.scl = new PVector(64*5+32, 64);
 
-    t1 = new Textbox("backText", ctrl, 2);
-    t1.parent = b1;
+    t1 = new Text("backText", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.text = "Back to Title";
-    t1.alignX = CENTER;
-    t1.alignY = CENTER;
-    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-    t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 32);
 
     for (int i = 0; i < stageMax; i++)
@@ -309,14 +296,10 @@ int eventPut(int num)
         128+(128+32)*(i/2));
       b1.scl = new PVector(width/2 - 64 - 32, 128);
 
-      t1 = new Textbox("stage"+(i)+"Text", ctrl, 2);
-      t1.parent = b1;
+      t1 = new Text("stage"+(i)+"Text", ctrl, 2);
+      t1.setParentOnCenter(b1);
       t1.text = "Stage "+i+"\n"+
         (stageTitles[i] == null ? "未実装" : stageTitles[i]);
-      t1.alignX = CENTER;
-      t1.alignY = CENTER;
-      t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-      t1.isIncParentGetScl = false;
       t1.scl = new PVector(0, 32);
     }
 
@@ -334,13 +317,9 @@ int eventPut(int num)
     b1.pos = new PVector(32, 32);
     b1.scl = new PVector(64*3, 64);
 
-    t1 = new Textbox("closeText", ctrl, 2);
-    t1.parent = b1;
+    t1 = new Text("closeText", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.text = "Close";
-    t1.alignX = CENTER;
-    t1.alignY = CENTER;
-    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-    t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 32);
 
     //i1 = new Image("expImage", ctrl, 1);
@@ -353,7 +332,7 @@ int eventPut(int num)
       String[] texts = loadStrings("howtoplay_exp.txt");
       for (int i = 0; i < texts.length; i++)
       {
-        t1 = new Textbox("expText_"+i, ctrl, 2);
+        t1 = new Text("expText_"+i, ctrl, 2);
         t1.pos = new PVector(64, w+64+w + (w+10)*i);
         t1.scl = new PVector(0, w);
 
@@ -377,13 +356,9 @@ int eventPut(int num)
     b1.pos = new PVector(32+64*3+64, 32);
     b1.scl = new PVector(64*3, 64);
 
-    t1 = new Textbox("openText", ctrl, 2);
-    t1.parent = b1;
+    t1 = new Text("openText", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.text = "使用素材";
-    t1.alignX = CENTER;
-    t1.alignY = CENTER;
-    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-    t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 32);
 
     break;
@@ -400,13 +375,9 @@ int eventPut(int num)
     b1.pos = new PVector(32, 32);
     b1.scl = new PVector(64*3, 64);
 
-    t1 = new Textbox("closeText", ctrl, 2);
-    t1.parent = b1;
+    t1 = new Text("closeText", ctrl, 2);
+    t1.setParentOnCenter(b1);
     t1.text = "Close";
-    t1.alignX = CENTER;
-    t1.alignY = CENTER;
-    t1.pos = new PVector(b1.scl.x/2, b1.scl.y/2); 
-    t1.isIncParentGetScl = false;
     t1.scl = new PVector(0, 32);
 
     {
@@ -414,7 +385,7 @@ int eventPut(int num)
       String[] texts = loadStrings("material_used.txt");
       for (int i = 0; i < texts.length; i++)
       {
-        t1 = new Textbox("expText_"+i, ctrl, 2);
+        t1 = new Text("expText_"+i, ctrl, 2);
         t1.pos = new PVector(64, 32+64+w + (w+10)*i);
         t1.scl = new PVector(0, w);
         t1.font = "name";
@@ -596,8 +567,6 @@ int eventPut(int num)
     backcolor = #98BBDB;
 
     time.value = timeMax.value = 60*60;
-
-    b1 = new Button("", ctrl, 0);
 
     break;
 

@@ -1,6 +1,6 @@
-Yudetamago2 ver.0.1.1
+Yudetamago2 ver.0.1.2
 
-ゆでたまご２ ver.0.1.1
+ゆでたまご２ ver.0.1.2
 
 ====
 

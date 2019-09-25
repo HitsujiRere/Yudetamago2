@@ -1,7 +1,7 @@
 // Base_Items - Textbox
 
 // テキスト用
-class Textbox extends ItemBase
+class Text extends ItemBase
 {
   String font = "main";
   String text = "";
@@ -9,7 +9,7 @@ class Textbox extends ItemBase
   int alignX = LEFT, alignY = TOP;
   color clr = #000000;
 
-  Textbox(String name, ItemCtrl ctrl, int page)
+  Text(String name, ItemCtrl ctrl, int page)
   {
     super(name, ctrl, page);
   }
@@ -21,5 +21,14 @@ class Textbox extends ItemBase
     textSize(getScl().y);
     fill(clr);
     text(text, getPos().x, getPos().y);
+  }
+
+  void setParentOnCenter(ItemBase p)
+  {
+    parent = p;
+    pos = new PVector(p.scl.x / 2, p.scl.y / 2);
+    alignX = CENTER;
+    alignY = CENTER;
+    isIncParentGetScl = false;
   }
 }

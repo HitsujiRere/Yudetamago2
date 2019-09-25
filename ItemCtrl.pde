@@ -100,12 +100,12 @@ class ItemCtrl
 
     return null;
   }
-  Textbox getText(String name)
+  Text getText(String name)
   {
     ItemBase tmp = getItem(name);
-    if (tmp instanceof Textbox)
+    if (tmp instanceof Text)
     {
-      return (Textbox)tmp;
+      return (Text)tmp;
     }
 
     return null;
