@@ -1,4 +1,4 @@
-// ゆでたまご２  ver.0.1.2
+// ゆでたまご２  ver.0.1.3
 // Yudetamago2 
 //  maked by 陽辻怜玲@HitsujiRere
 
@@ -16,7 +16,7 @@ boolean isPlayBGM = false;
 HashMap<String, PImage> Images = new HashMap();
 
 // デバッグモード
-boolean debugMode = true;
+boolean debugMode = false;
 
 // ステージ番号
 //    -1:初期化
@@ -138,11 +138,13 @@ void draw()
   if (debugMode)
   {
     // 情報
+    println();
     println("frameCount:" + frameCount);
     println("frameRate " + frameRate);
     println("mouseX:"+mouseX);
     println("mouseY:"+mouseY);
-    println();
+    println("key:"+key);
+    println("keyCode:"+keyCode);
   }
 }
 
