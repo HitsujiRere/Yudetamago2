@@ -7,7 +7,7 @@ https://scrapbox.io/hitsujirere-projects/%E3%82%86%E3%81%A7%E3%81%9F%E3%81%BE%E3
 
 # このゲームについて
 卵が地面に落ちるまでに鍋，水，コンロを集めて、ゆでたまごを作る準備をするクリックゲーム  
-詳細は下記のURL先に記載
+詳細は下記のURL先に記載  
 https://scrapbox.io/hitsujirere-projects/%E3%82%86%E3%81%A7%E3%81%9F%E3%81%BE%E3%81%94%EF%BC%92
 
 
