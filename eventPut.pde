@@ -568,6 +568,85 @@ int eventPut(int num)
 
     time.value = timeMax.value = 60*60;
 
+    b1 = new Button("donut", ctrl, 0);
+    b1.pos = new PVector(450, 350);
+    b1.scl = new PVector(160, 120);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("donut_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("donut").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+
+    b1 = new Button("door1", ctrl, 2);
+    b1.pos = new PVector(150, 30);
+    b1.scl = new PVector(160, 240);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("door1_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("doorClose").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+
+    b1 = new Button("door2", ctrl, 2);
+    b1.pos = new PVector(150+160+40, 30);
+    b1.scl = new PVector(160, 240);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("door2_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("doorClose").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+
+    b1 = new Button("door3", ctrl, 2);
+    b1.pos = new PVector(150+160*2+40*2, 30);
+    b1.scl = new PVector(160, 240);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("door3_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("doorClose").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+
+    b1 = new Button("door4", ctrl, 2);
+    b1.pos = new PVector(150+160*3+40*3+40, 30+120-5);
+    b1.scl = new PVector(80, 120);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("door4_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("doorClose").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+
+    i1 = new Image("dragon", ctrl, 1);
+    i1.img = Images.get("dragonGreen");
+    i1.pos = new PVector(140, 150);
+    i1.scl = new PVector(100, 100);
+    i1.resize();
+
+    i1 = new Image("pegasus", ctrl, 1);
+    i1.img = Images.get("pegasus");
+    i1.pos = new PVector(600, 100);
+    i1.scl = new PVector(100, 100);
+    i1.resize();
+
+    i1 = new Image("stars", ctrl, 0);
+    i1.img = Images.get("stars");
+    i1.pos = new PVector(520, 30);
+    i1.scl = new PVector(230, 230);
+    i1.resize();
+    
+    i1 = new Image("water", ctrl, 1);
+    i1.img = Images.get("water");
+    i1.pos = new PVector(805, 180);
+    i1.scl = new PVector(60, 60);
+    i1.resize();
+
     break;
 
     // stage 5
@@ -582,6 +661,12 @@ int eventPut(int num)
     time.value = timeMax.value = 60;
 
     break;
+
+
+  default:
+    stage = 0;
+    eventPut(stage);
+    return 1;
   }
 
   return 0;

@@ -311,6 +311,42 @@ int eventRun(int num)
     if (eventRun(-2) != 0)
       return 1;
 
+    i1 = ctrl.getImage("water");
+    if (key == 'q')
+    {
+      i1.pos.x = mouseX;
+      i1.pos.y = mouseY;
+    }
+    println(i1.pos.x, i1.pos.y);
+
+    b1 = ctrl.getButton("door1");
+    if (b1.isValueChanged)
+    {
+      b1.isRun = false;
+      b1.isValueChanged = false;
+    }
+
+    b1 = ctrl.getButton("door2");
+    if (b1.isValueChanged)
+    {
+      b1.isRun = false;
+      b1.isValueChanged = false;
+    }
+
+    b1 = ctrl.getButton("door3");
+    if (b1.isValueChanged)
+    {
+      b1.isRun = false;
+      b1.isValueChanged = false;
+    }
+
+    b1 = ctrl.getButton("door4");
+    if (b1.isValueChanged)
+    {
+      b1.isRun = false;
+      b1.isValueChanged = false;
+    }
+
     break;
 
     // stage 5
@@ -320,6 +356,12 @@ int eventRun(int num)
       return 1;
 
     break;
+
+
+  default:
+    stage = 0;
+    eventPut(stage);
+    return 1;
   }
 
   return 0;

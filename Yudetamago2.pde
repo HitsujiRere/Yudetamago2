@@ -75,6 +75,7 @@ void setup()
 
   // 音楽のロード
   minim = new Minim(this);
+  //minim.debugOn();
   files = listFiles(path + "\\data\\musics");
   for (File a : files)
   {
@@ -129,6 +130,11 @@ void setup()
 
 void draw()
 {
+  if (debugMode)
+  {
+    println();
+  }
+  
   background(backcolor);
 
   ctrl.run();
@@ -138,7 +144,6 @@ void draw()
   if (debugMode)
   {
     // 情報
-    println();
     println("frameCount:" + frameCount);
     println("frameRate " + frameRate);
     println("mouseX:"+mouseX);
