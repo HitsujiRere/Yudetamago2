@@ -1,8 +1,8 @@
 int eventRun(int num)
 {
   //Textbox t1;
-  Button b1;
-  Image i1;
+  Button b1, b2;
+  Image i1, i2;
   Rect r1;
   Flag f1;
 
@@ -38,7 +38,6 @@ int eventRun(int num)
     r1 = ctrl.getRect("timerIn");
     r1.pos.y = 16.0 + (640-16*2-128) - dy;
     r1.scl.y = dy;
-
 
     ctrl.getImage("icon_nabe" ).isDisplay = get_nabe.value > 0 ? 
       true : false;
@@ -293,7 +292,7 @@ int eventRun(int num)
           message.text = "コンロを手に入れた！\n";
         } else
         {
-          b1.images[0].img = Images.get("konro");
+          b1.images[0].img = Images.get("konro").copy();
           b1.images[0].resize();
           f1.value++;
         }
@@ -311,22 +310,67 @@ int eventRun(int num)
     if (eventRun(-2) != 0)
       return 1;
 
-    i1 = ctrl.getImage("water");
-    if (key == 'q')
+    /*i1 = ctrl.getImage("treasure");
+     if (key == 'q')
+     {
+     i1.pos.x = mouseX;
+     i1.pos.y = mouseY;
+     }
+     println(i1.pos.x, i1.pos.y);*/
+    b1 = ctrl.getButton("donut");
+    if (b1.isValueChangedTrue && !ctrl.getImage("stars").isRun)
     {
-      i1.pos.x = mouseX;
-      i1.pos.y = mouseY;
+      get_nabe.value++;
+      message.text = "鍋を手に入れた！\n";
+      b1.isRun = false;
+      b1.isValueChangedTrue = false;
     }
-    println(i1.pos.x, i1.pos.y);
 
     b1 = ctrl.getButton("door1");
+    b2 = ctrl.getButton("dragon");
+    if (b2.isValueChangedTrue && !b1.isRun && !ctrl.getImage("stars").isRun)
+    {
+      b2.isRun = false;
+      b2.isValueChangedTrue = false;
+      ctrl.getFlag("haveKey").value++;
+      message.text = "鍵を手に入れた！";
+    }
     if (b1.isValueChanged)
     {
       b1.isRun = false;
       b1.isValueChanged = false;
+
+      b2.anmsPos = new PVector[]{new PVector(140, 70), new PVector(450-80, 350-10)};
+      b2.anmsWeitTime = new int[]{ 50 };
+      b2.anmRepeatTime = 1;
+      b2.anmReset();
     }
 
     b1 = ctrl.getButton("door2");
+    b2 = ctrl.getButton("treasure");
+    if (b2.isValueChangedTrue && !b1.isRun)
+    {
+      if (ctrl.getFlag("openTre").value > 0)
+      {
+        get_konro.value++;
+        message.text = "コンロを手に入れた！\n";
+        b2.isRun = false;
+        b2.isValueChangedTrue = false;
+      } else
+      {
+        f1 = ctrl.getFlag("haveKey");
+        if (f1.value > 0)
+        {
+          b2.images[0].img = Images.get("nabe").copy();
+          b2.images[0].resize();
+          b2.copyImage(0);
+          ctrl.getFlag("openTre").value++;
+        } else
+        {
+          message.text = "鍵がかかっている・・・\n";
+        }
+      }
+    }
     if (b1.isValueChanged)
     {
       b1.isRun = false;
@@ -338,13 +382,56 @@ int eventRun(int num)
     {
       b1.isRun = false;
       b1.isValueChanged = false;
+
+      i1 = ctrl.getImage("pegasus");
+      i1.anmsPos = new PVector[]{new PVector(560, 100), new PVector(width+150, 100)};
+      i1.anmsWeitTime = new int[]{ 100 };
+      i1.anmRepeatTime = 1;
+      i1.anmReset();
+
+      b1 = ctrl.getButton("water");
+      b1.isRun = false;
+
+      i1 = ctrl.getImage("stars");
+      i1.anmsPos = new PVector[]{new PVector(520, 30), new PVector(450-35, 350-55)};
+      i1.anmsWeitTime = new int[]{ 100 };
+      i1.anmRepeatTime = 1;
+      i1.anmReset();
     }
 
     b1 = ctrl.getButton("door4");
+    b2 = ctrl.getButton("water");
+    if (b2.isValueChangedTrue && !b1.isRun)
+    {
+      get_water.value++;
+      message.text = "水を手に入れた！\n";
+      b2.isRun = false;
+      b2.isValueChangedTrue = false;
+    }
     if (b1.isValueChanged)
     {
       b1.isRun = false;
       b1.isValueChanged = false;
+    }
+
+    i1 = ctrl.getImage("stars");
+    if (i1.pos.x < 450-35+5)
+    {
+      i1.isRun = false;
+
+      b1 = ctrl.getButton("donut");
+      b1.images[0].img = Images.get("konro").copy();
+      b1.images[0].resize();
+      b1.copyImage(0);
+
+      b1 = ctrl.getButton("door1");
+      if (!b1.isRun)
+      {
+        b2 = ctrl.getButton("dragon");
+        b2.images[0].img = Images.get("key").copy();
+        b2.images[0].resize();
+        b2.copyImage(0);
+      }
     }
 
     break;

@@ -567,7 +567,9 @@ int eventPut(int num)
     backcolor = #98BBDB;
 
     time.value = timeMax.value = 60*60;
-
+    
+    message.text += "\nDonut OR NOT Donut\n";
+    
     b1 = new Button("donut", ctrl, 0);
     b1.pos = new PVector(450, 350);
     b1.scl = new PVector(160, 120);
@@ -623,29 +625,53 @@ int eventPut(int num)
     b1.copyImage(0);
     b1.onTimeMax = 5;
 
-    i1 = new Image("dragon", ctrl, 1);
-    i1.img = Images.get("dragonGreen");
-    i1.pos = new PVector(140, 150);
-    i1.scl = new PVector(100, 100);
-    i1.resize();
+    b1 = new Button("dragon", ctrl, 1);
+    b1.pos = new PVector(140, 70);
+    b1.scl = new PVector(140, 140);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("dragon_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("dragonGreen").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+
+    b1 = new Button("treasure", ctrl, 1);
+    b1.pos = new PVector(360, 130);
+    b1.scl = new PVector(140, 140);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("treasure_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("treasure").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
+    
+    f1 = new Flag("haveKey", ctrl);
+    f1 = new Flag("openTre", ctrl);
 
     i1 = new Image("pegasus", ctrl, 1);
-    i1.img = Images.get("pegasus");
-    i1.pos = new PVector(600, 100);
-    i1.scl = new PVector(100, 100);
+    i1.img = Images.get("pegasus").copy();
+    i1.pos = new PVector(560, 100);
+    i1.scl = new PVector(140, 140);
     i1.resize();
 
     i1 = new Image("stars", ctrl, 0);
-    i1.img = Images.get("stars");
+    i1.img = Images.get("stars").copy();
     i1.pos = new PVector(520, 30);
     i1.scl = new PVector(230, 230);
     i1.resize();
-    
-    i1 = new Image("water", ctrl, 1);
-    i1.img = Images.get("water");
-    i1.pos = new PVector(805, 180);
-    i1.scl = new PVector(60, 60);
-    i1.resize();
+
+    b1 = new Button("water", ctrl, 1);
+    b1.pos = new PVector(805, 180);
+    b1.scl = new PVector(60, 60);
+    b1.displayMode = 2;
+    b1.images[0] = new Image("water_img", null, 0);
+    b1.images[0].parent = b1;
+    b1.images[0].img = Images.get("water").copy();
+    b1.images[0].resize();
+    b1.copyImage(0);
+    b1.onTimeMax = 5;
 
     break;
 
@@ -661,7 +687,6 @@ int eventPut(int num)
     time.value = timeMax.value = 60;
 
     break;
-
 
   default:
     stage = 0;

@@ -125,6 +125,8 @@ void setup()
     stageTitles[parseInt(sp[0])] = sp[1];
   }
 
+  //delay(1000);
+
   eventPut(stage);
 }
 
@@ -134,7 +136,7 @@ void draw()
   {
     println();
   }
-  
+
   background(backcolor);
 
   ctrl.run();
@@ -151,6 +153,8 @@ void draw()
     println("key:"+key);
     println("keyCode:"+keyCode);
   }
+  
+  //delay(100);
 }
 
 void keyPressed()
@@ -183,6 +187,10 @@ void keyPressed()
       else
         a.mute();
     }
+
+  // ESCを押したときに閉じないため
+  case ESC:
+    key = 0;
     break;
   }
 }
