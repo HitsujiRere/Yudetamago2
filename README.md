@@ -1,4 +1,4 @@
-ゆでたまご２ ver0.1.3
+ゆでたまご２ ver0.1.4
 
 # 作品ホームページ
 https://scrapbox.io/hitsujirere-projects/%E3%82%86%E3%81%A7%E3%81%9F%E3%81%BE%E3%81%94%EF%BC%92
