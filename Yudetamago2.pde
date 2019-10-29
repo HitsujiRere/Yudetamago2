@@ -125,7 +125,6 @@ void setup()
     stageTitles[parseInt(sp[0])] = "";
     for (int i = 0; i < words.length; i++)
       stageTitles[parseInt(sp[0])] += words[i]+(i < words.length-1 ? "\n" : "");
-    stageTitles[parseInt(sp[0])] = sp[1];
   }
 
   //delay(1000);
