@@ -67,7 +67,6 @@ void setup()
   {
     String[] sp = a.split(":");
     ctrl.fonts.put(sp[0], createFont(sp[1], 128, true));
-    stageTitles[parseInt(sp[0])] = sp[1];
   }
 
   String path = sketchPath();
@@ -122,6 +121,10 @@ void setup()
   for (String a : titles)
   {
     String[] sp = a.split(":");
+    String[] words = sp[1].split("/");
+    stageTitles[parseInt(sp[0])] = "";
+    for (int i = 0; i < words.length; i++)
+      stageTitles[parseInt(sp[0])] += words[i]+(i < words.length-1 ? "\n" : "");
     stageTitles[parseInt(sp[0])] = sp[1];
   }
 
@@ -153,7 +156,7 @@ void draw()
     println("key:"+key);
     println("keyCode:"+keyCode);
   }
-  
+
   //delay(100);
 }
 
@@ -188,7 +191,7 @@ void keyPressed()
         a.mute();
     }
 
-  // ESCを押したときに閉じないため
+    // ESCを押したときに閉じないため
   case ESC:
     key = 0;
     break;
